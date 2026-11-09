@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.angular/
+target/
+*.log
+*.jar
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+  labels:
+    app: spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring
+  template:
+    metadata:
+      labels:
+        app: spring
+    spec:
+      containers:
+        - name: spring
+          image: maki1karim2hech/spring-app:1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8081
+          env:
+            # non-sensitive -> ConfigMap
+            - name: SERVER_PORT
+              valueFrom:
+                configMapKeyRef: { name: app-config, key: SERVER_PORT }
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef: { name: app-config, key: SPRING_DATASOURCE_URL }
+            - name: CORS_ALLOWED_ORIGINS
+              valueFrom:
+                configMapKeyRef: { name: app-config, key: CORS_ALLOWED_ORIGINS }
+            # sensitive -> Secret
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef: { name: app-secret, key: SPRING_DATASOURCE_USERNAME }
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef: { name: app-secret, key: SPRING_DATASOURCE_PASSWORD }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-service
+spec:
+  type: NodePort
+  selector:
+    app: spring
+  ports:
+    - port: 8081
+      targetPort: 8081
+      nodePort: 30081
