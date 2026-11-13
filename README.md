@@ -20,18 +20,6 @@ The goal of this project is to demonstrate a complete containerized deployment:
   </picture>
 </p>
 
-```mermaid
-flowchart LR
-    B[Browser] -->|http://angular.tp.local| I[NGINX Ingress<br/>tp-ingress]
-    B -->|http://api.tp.local| I
-    I -->|"/"| AS[angular-service<br/>NodePort 30080]
-    I -->|"/"| SS[spring-service<br/>NodePort 30081]
-    AS --> AP[Angular pod<br/>Nginx :80]
-    SS --> SP[Spring Boot pod<br/>:8081]
-    SP -->|JDBC 3306| MS[mysql-service<br/>ClusterIP]
-    MS --> MP[MySQL 8 pod]
-```
-
 The frontend is also directly reachable through the NodePort `30080` and the API through `30081`.
 
 ## Tech stack
