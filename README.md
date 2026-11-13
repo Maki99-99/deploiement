@@ -13,6 +13,13 @@ The goal of this project is to demonstrate a complete containerized deployment:
 
 ## Architecture
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/kubernetes-deployments-arch-dark.svg">
+    <img width="880" alt="Architecture diagram: a browser and Docker images feed a Kubernetes cluster; NGINX Ingress routes angular.tp.local to Angular and api.tp.local to Spring Boot, which queries MySQL over JDBC" src="assets/kubernetes-deployments-arch-light.svg">
+  </picture>
+</p>
+
 ```mermaid
 flowchart LR
     B[Browser] -->|http://angular.tp.local| I[NGINX Ingress<br/>tp-ingress]
@@ -63,6 +70,7 @@ The frontend is also directly reachable through the NodePort `30080` and the API
 │   ├── spring-deployment.yaml
 │   ├── angular-deployment.yaml
 │   └── ingress.yaml
+├── assets/                       # README architecture diagram (SVG, dark / light skins)
 └── livrables-k8s.tar.gz          # Packaged deliverable (manifests + Dockerfiles + env files)
 ```
 

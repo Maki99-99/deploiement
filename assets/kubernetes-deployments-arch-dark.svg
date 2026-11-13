@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="880" height="380" viewBox="0 0 880 380" role="img" aria-label="kubernetes-deployments architecture: a browser and Docker images feed a Kubernetes cluster where NGINX Ingress routes to Angular and Spring Boot pods, and Spring Boot queries MySQL">
+  <title>kubernetes-deployments — architecture</title>
+  <defs>
+    <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1220"/>
+      <stop offset="1" stop-color="#0F1A2E"/>
+    </linearGradient>
+    <marker id="amk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3D4F75"/>
+    </marker>
+    <path id="flowBrowser" d="M192 120 C 300 120, 380 130, 468 130"/>
+    <path id="flowDeploy" d="M192 288 H240"/>
+    <path id="flowAngular" d="M515 160 C 515 206, 343 204, 343 254"/>
+    <path id="flowSpring" d="M560 160 C 560 208, 527 208, 527 254"/>
+    <path id="flowMysql" d="M602 290 H632"/>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="879" height="379" rx="18" fill="url(#abg)" stroke="#23304F"/>
+
+  <text x="36" y="36" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="11.5" letter-spacing="2" fill="#8CA3C7">kubernetes-deployments · architecture</text>
+
+  <g font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9" fill="#8CA3C7">
+    <circle cx="660" cy="30" r="3" fill="#22D3EE"/>
+    <text x="670" y="33">HTTP request</text>
+    <circle cx="764" cy="30" r="3" fill="#818CF8"/>
+    <text x="774" y="33">deploy</text>
+  </g>
+
+  <!-- cluster boundary -->
+  <rect x="244" y="64" width="600" height="280" rx="18" fill="#0C162A" fill-opacity="0.45" stroke="#22D3EE" stroke-opacity="0.45" stroke-dasharray="6 6"/>
+  <text x="266" y="90" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9.5" letter-spacing="3" fill="#22D3EE" fill-opacity="0.9">KUBERNETES CLUSTER</text>
+
+  <!-- browser node -->
+  <g>
+    <rect x="36" y="88" width="156" height="64" rx="12" fill="#0E1A30" stroke="#23304F"/>
+    <rect x="51" y="105" width="24" height="20" rx="3" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+    <line x1="51" y1="111" x2="75" y2="111" stroke="#818CF8" stroke-width="1.4"/>
+    <g fill="#818CF8">
+      <circle cx="55" cy="108.5" r="1"/>
+      <circle cx="59" cy="108.5" r="1"/>
+      <circle cx="63" cy="108.5" r="1"/>
+    </g>
+    <text x="84" y="120" font-family="Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#E6EDF7">Browser</text>
+    <text x="84" y="138" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#8CA3C7">user</text>
+  </g>
+
+  <!-- docker node -->
+  <g>
+    <rect x="36" y="256" width="156" height="64" rx="12" fill="#0E1A30" stroke="#23304F"/>
+    <g fill="#818CF8">
+      <rect x="53" y="283" width="8" height="5" rx="1"/>
+      <rect x="62" y="283" width="8" height="5" rx="1"/>
+      <rect x="58" y="276" width="8" height="5" rx="1"/>
+    </g>
+    <path d="M51 291 q 13 6 29 0" fill="none" stroke="#818CF8" stroke-width="1.4" stroke-linecap="round"/>
+    <text x="84" y="288" font-family="Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#E6EDF7">Docker</text>
+    <text x="84" y="306" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#8CA3C7">image build &amp; push</text>
+  </g>
+
+  <!-- ingress node -->
+  <g>
+    <rect x="472" y="100" width="144" height="60" rx="12" fill="#0E1A30" stroke="#23304F"/>
+    <polygon points="498,116 510,123 510,137 498,144 486,137 486,123" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+    <path d="M493 130 h11 m-4 -4 l4 4 -4 4" fill="none" stroke="#818CF8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="520" y="126" font-family="Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#E6EDF7">NGINX Ingress</text>
+    <text x="520" y="144" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9.5" fill="#8CA3C7">tp-ingress</text>
+  </g>
+
+  <!-- angular node -->
+  <g>
+    <rect x="268" y="256" width="150" height="68" rx="12" fill="#0E1A30" stroke="#23304F"/>
+    <path d="M295 273 l10 3.6 -1.6 12.6 -8.4 4.2 -8.4 -4.2 -1.6 -12.6 z" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+    <path d="M289.5 292 L295 280 L300.5 292 M291.3 287.5 H298.7" fill="none" stroke="#818CF8" stroke-width="1.4" stroke-linecap="round"/>
+    <text x="320" y="284" font-family="Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#E6EDF7">Angular</text>
+    <text x="320" y="302" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9" fill="#8CA3C7">angular.tp.local</text>
+  </g>
+
+  <!-- spring node -->
+  <g>
+    <rect x="452" y="256" width="150" height="68" rx="12" fill="#0E1A30" stroke="#23304F"/>
+    <circle cx="479" cy="288" r="8.5" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+    <path d="M479 281 C 484 283 484 289 479 292 C 475 288 475 284 479 281 Z" fill="#818CF8" fill-opacity="0.85"/>
+    <text x="504" y="284" font-family="Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#E6EDF7">Spring Boot</text>
+    <text x="504" y="302" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9" fill="#8CA3C7">api.tp.local</text>
+  </g>
+
+  <!-- mysql node -->
+  <g>
+    <rect x="636" y="256" width="150" height="68" rx="12" fill="#0E1A30" stroke="#23304F"/>
+    <ellipse cx="663" cy="283" rx="8.5" ry="3" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+    <path d="M654.5 283 v11 M671.5 283 v11 M654.5 294 a8.5 3 0 0 0 17 0" fill="none" stroke="#818CF8" stroke-width="1.4"/>
+    <text x="688" y="284" font-family="Inter,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#E6EDF7">MySQL 8</text>
+    <text x="688" y="302" font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9" fill="#8CA3C7">mysql-service:3306</text>
+  </g>
+
+  <!-- arrows -->
+  <g fill="none" stroke="#3D4F75" stroke-width="1.4">
+    <use href="#flowBrowser" marker-end="url(#amk)"/>
+    <use href="#flowAngular" marker-end="url(#amk)"/>
+    <use href="#flowSpring" marker-end="url(#amk)"/>
+    <use href="#flowMysql" marker-end="url(#amk)"/>
+    <use href="#flowDeploy" stroke-dasharray="5 5"/>
+  </g>
+
+  <g font-family="'Cascadia Code','SF Mono',Menlo,Consolas,monospace" font-size="9" fill="#8CA3C7" opacity="0.9">
+    <text x="318" y="112">HTTPS</text>
+    <text x="216" y="278" text-anchor="middle">deploy</text>
+    <text x="382" y="222" text-anchor="middle">angular.tp.local</text>
+    <text x="592" y="206" text-anchor="middle">api.tp.local</text>
+    <text x="617" y="282" text-anchor="middle">3306</text>
+  </g>
+
+  <!-- moving packets: slow, low-opacity glowing dots; hidden when animation is off -->
+  <g fill="#22D3EE" opacity="0">
+    <animate attributeName="opacity" values="0;0.9" dur="2s" begin="0s" fill="freeze"/>
+    <g>
+      <animateMotion dur="8s" begin="0s" repeatCount="indefinite"><mpath href="#flowBrowser" xlink:href="#flowBrowser"/></animateMotion>
+      <circle r="6.5" fill-opacity="0.16"/>
+      <circle r="2.2" fill-opacity="0.72"/>
+    </g>
+  </g>
+  <g fill="#22D3EE" opacity="0">
+    <animate attributeName="opacity" values="0;0.9" dur="2s" begin="0s" fill="freeze"/>
+    <g>
+      <animateMotion dur="7s" begin="1.2s" repeatCount="indefinite"><mpath href="#flowAngular" xlink:href="#flowAngular"/></animateMotion>
+      <circle r="6.5" fill-opacity="0.16"/>
+      <circle r="2.2" fill-opacity="0.72"/>
+    </g>
+  </g>
+  <g fill="#22D3EE" opacity="0">
+    <animate attributeName="opacity" values="0;0.9" dur="2s" begin="0s" fill="freeze"/>
+    <g>
+      <animateMotion dur="6.4s" begin="2.4s" repeatCount="indefinite"><mpath href="#flowSpring" xlink:href="#flowSpring"/></animateMotion>
+      <circle r="6.5" fill-opacity="0.16"/>
+      <circle r="2.2" fill-opacity="0.72"/>
+    </g>
+  </g>
+  <g fill="#22D3EE" opacity="0">
+    <animate attributeName="opacity" values="0;0.9" dur="2s" begin="0s" fill="freeze"/>
+    <g>
+      <animateMotion dur="5s" begin="0.6s" repeatCount="indefinite"><mpath href="#flowMysql" xlink:href="#flowMysql"/></animateMotion>
+      <circle r="6.5" fill-opacity="0.16"/>
+      <circle r="2.2" fill-opacity="0.72"/>
+    </g>
+  </g>
+  <g fill="#818CF8" opacity="0">
+    <animate attributeName="opacity" values="0;0.9" dur="2s" begin="0s" fill="freeze"/>
+    <g>
+      <animateMotion dur="9s" begin="3s" repeatCount="indefinite"><mpath href="#flowDeploy" xlink:href="#flowDeploy"/></animateMotion>
+      <circle r="6.5" fill-opacity="0.16"/>
+      <circle r="2.2" fill-opacity="0.72"/>
+    </g>
+  </g>
+</svg>
